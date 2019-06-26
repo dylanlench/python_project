@@ -8,7 +8,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 
 def logandreg(request):
-    return render(request, "log_reg/index.html")
+    return render(request, "oneapp/index.html")
 
 def register(request):
     errors = False
@@ -47,6 +47,16 @@ def login(request):
         messages.error(request, 'Invalid Credentials')
         return redirect('/')
 
+def carts(request):
+    return render (request, 'oneapp/my.html')
+
 def logout(request):
     request.session.clear()
     return redirect('/')
+
+def main(request):
+    if 'admin_id' not in request.session:
+        messages.error(request,"Please Log in or Register") 
+        return redirect ('/')
+    else:
+        return render (request,'oneapp/main.html')

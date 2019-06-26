@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carts</title>
+    <style>
+    
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .header h2{
+        display: inline-block;
+        color: white;
+        margin-left: 15px;
+    }
+
+    .header a{
+        margin-left: 1150px;
+        margin-right: 15px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .pay{
+        margin-left: 225px;
+    }
+    
+    .back{
+        text-decoration: none;
+        background-color: lightgreen;
+        border-right: 4px solid black;
+        border-left: 1px solid black;
+        border-bottom: 3px solid black;
+        border-top: 1px solid black;
+        color: white;
+        padding: 5px;
+        
+    }
+
+    .pay{
+        text-decoration: none;
+        background-color: blue;
+        border-right: 4px solid black;
+        border-left: 1px solid black;
+        border-bottom: 3px solid black;
+        border-top: 1px solid black;
+        color: white;
+        padding: 5px;
+        
+    }
+
+    .entries{
+        margin-left: 20px;
+    }
+
+    .entries label{
+        text-align: right;
+        width: 100px;
+        display: inline-block;
+    }
+
+    .entries input{
+        margin-bottom: 5px;
+        display: inline-block;
+        margin-left: 25px;
+
+    }
+    
+    .header{
+        position: fixed;
+        top: 1px;
+        background-color: #212121;
+        
+    }
+    
+    table{
+        margin-top: 90px;
+        text-align: center;
+        margin-left: 150px;
+        border: 2px solid black;
+    }
+
+    .table th{
+        padding-right: 250px;
+    }
+    
+
+    .container a{
+        margin-left: 1190px;
+    }
+
+    .container p {
+        margin-left: 1230px;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Dojo eCommerce</h2>
+        <a href="/carts">Shopping Cart ()</a>
+    </div>
+<div class="container">
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>  </td>
+                    <td>  </td>
+                    <td>  </td>
+                    <td>  </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <p>Total $</p>
+        <a class="back" href="/products">Continue Shopping</a>
+    </div>
+</div>
+
+    <div class="entries">
+        <h1>Shipping Information</h1>
+        <form class="ship" action="/" method="POST">
+            <label for="fname">First Name: </label>   
+            <input type="text" name="fname"><br>
+            <label for="lname">Last Name: </label>   
+            <input type="text" name="lname"><br>
+            <label for="address">Address: </label>   
+            <input type="text" name="address"><br>
+            <label for="address2">Address 2: </label>   
+            <input type="text" name="address2"><br>
+            <label for="city">City: </label>   
+            <input type="text" name="city"><br>
+            <label for="state">State: </label>   
+            <input type="text" name="state"><br>
+            <label for="zip">Zip Code: </label>   
+            <input type="number" name="zip"><br> 
+
+            <h1>Billing Information</h1>
+            <input class="check" type="checkbox" name="same">
+            <label class="same" for="same">Same as Shipping address: </label>  <br><br> 
+        
+            <label for="fname_bill">First Name: </label>   
+            <input type="text" name="fname_bill"><br>
+            <label for="lname_bill">Last Name: </label>   
+            <input type="text" name="lname_bill"><br>
+            <label for="address_bill">Address: </label>   
+            <input type="text" name="address_bill"><br>
+            <label for="address2_bill">Address 2: </label>   
+            <input type="text" name="address2_bill"><br>
+            <label for="city_bill">City: </label>   
+            <input type="text" name="city_bill"><br>
+            <label for="state_bill">State: </label>   
+            <input type="text" name="state_bill"><br>
+            <label for="zip_bill">Zip Code: </label>   
+            <input type="number" name="zip_bill"><br>
+
+            <label for="card">Card #: </label>   
+            <input type="number" name="card"><br>
+            <label for="security_code">Security Code: </label>   
+            <input type="number" name="security_code"><br>
+            <label for="expiry">Expiration Date #: </label>   
+            <input type="month" name="expiry"><br>
+
+
+            <input class="pay" type="submit" value="Pay">
+
+
+        </form>
+    </div>
+
+</body>
+</html>
