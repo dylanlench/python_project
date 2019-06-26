@@ -8,7 +8,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 
 def logandreg(request):
-    return render(request, "log_reg/index.html")
+    return render(request, "oneapp/index.html")
 
 def register(request):
     errors = False
@@ -50,3 +50,13 @@ def login(request):
 def logout(request):
     request.session.clear()
     return redirect('/')
+
+def main(request):
+    if 'admin_id' not in request.session:
+        messages.error(request, 'please log in or register')
+        return redirect('/')
+    else:
+        context = {
+            'all_orders' : Order.objects.all()
+        }
+        return render(request, 'oneapp/main.html', context)
