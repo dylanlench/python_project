@@ -6,5 +6,47 @@ import bcrypt
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
-def index(request):
-    return(ladida)
+
+def logandreg(request):
+    return render(request, "log_reg/index.html")
+
+def register(request):
+    errors = False
+    if not EMAIL_REGEX.match(request.POST['email']):
+        messages.error(request, 'Email is invalid')
+        errors = True
+    if(len(request.POST['password']) < 1):
+        messages.error(request, 'Password is required')
+        errors = True
+    if(request.POST['password'] != request.POST['confirm_password']):
+        messages.error(request, 'Passwords do not match')
+        errors = True
+
+    if(errors):
+        return redirect('/')
+
+    hashed = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt())
+    admin = Admin.objects.create(
+        email = request.POST['email'], 
+        password = hashed, 
+    )
+
+    request.session['admin_id'] = admin.id
+    return redirect('/main')
+
+def login(request):
+    try:
+        admin = Admin.objects.get(email = request.POST['email'])
+        if(bcrypt.checkpw(request.POST['password'].encode(), admin.password.encode())):
+            request.session['admin_id'] = admin.id
+            return redirect('/main')
+        else:
+            messages.error(request, 'Invalid Credentials')
+            return redirect('/')
+    except Admin.DoesNotExist:
+        messages.error(request, 'Invalid Credentials')
+        return redirect('/')
+
+def logout(request):
+    request.session.clear()
+    return redirect('/')
